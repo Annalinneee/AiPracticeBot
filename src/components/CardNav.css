@@ -1,0 +1,4 @@
+/* CardNav.css */
+nav div:hover .dropdown {
+  display: flex;
+}
