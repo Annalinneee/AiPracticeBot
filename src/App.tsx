@@ -1,52 +1,34 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+// src/App.tsx
 
-/* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-import '@ionic/react/css/palettes/dark.system.css';
+import { IonApp, IonRouterOutlet } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { Route, Redirect } from "react-router-dom";
 
-/* Theme variables */
-import './theme/variables.css';
+import LandingPage from "./pages/LandingPage";
+import Home from "./pages/Home";
 
-/* Pages */
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Menu from './pages/Menu';
-import HomeTabs from './pages/home-tabs/HomeTabs';
-import LandingPage from './pages/LandingPage';
+import "@ionic/react/css/core.css";
 
-setupIonicReact();
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter basename="/it35-lab">
-      <IonRouterOutlet>
-        {/* Landing page as first page */}
-        <Route exact path="/it35-lab/landing" component={LandingPage} />
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
 
-        {/* Login/Register */}
-        <Route exact path="/it35-lab" component={Login} />
-        <Route exact path="/it35-lab/register" component={Register} />
+          <Route exact path="/home">
+            <Home />
+          </Route>
 
-        {/* App & HomeTabs */}
-        <Route path="/it35-lab/app" component={Menu} />
-        <Route path="/it35-lab/home-tabs" component={HomeTabs} />
+          <Redirect to="/" />
 
-        {/* Redirect root */}
-        <Redirect from="/" to="/it35-lab/landing" exact />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

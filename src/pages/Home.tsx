@@ -1,3 +1,5 @@
+// src/pages/Home.tsx
+
 import {
   IonPage,
   IonContent,
@@ -26,7 +28,7 @@ const questions = [
   'Describe a difficult situation you solved.',
 ];
 
-const AIPracticeBot: React.FC = () => {
+const Home: React.FC = () => {
   const [messages, setMessages] = useState<any[]>([]);
   const [answer, setAnswer] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -113,7 +115,6 @@ const AIPracticeBot: React.FC = () => {
           '--background': '#f1f5ff',
         }}
       >
-        {/* CSS */}
         <style>{`
           .header {
             background: white;
@@ -211,7 +212,6 @@ const AIPracticeBot: React.FC = () => {
           }
         `}</style>
 
-        {/* HEADER */}
         <div className="header">
           <div className="logo">
             <IonIcon
@@ -227,7 +227,6 @@ const AIPracticeBot: React.FC = () => {
           </IonButton>
         </div>
 
-        {/* SETUP */}
         <div className="setup-bar">
           <IonSelect
             placeholder="Select Role"
@@ -253,7 +252,9 @@ const AIPracticeBot: React.FC = () => {
             onIonChange={(e) => setDifficulty(e.detail.value!)}
           >
             <IonSelectOption value="Easy">Easy</IonSelectOption>
+
             <IonSelectOption value="Medium">Medium</IonSelectOption>
+
             <IonSelectOption value="Hard">Hard</IonSelectOption>
           </IonSelect>
 
@@ -265,7 +266,6 @@ const AIPracticeBot: React.FC = () => {
           </IonButton>
         </div>
 
-        {/* PROGRESS */}
         <div className="progress-container">
           <IonProgressBar
             value={questionIndex / questions.length}
@@ -276,7 +276,6 @@ const AIPracticeBot: React.FC = () => {
           </p>
         </div>
 
-        {/* CHAT */}
         <div className="chat-area">
           {messages.map((msg, index) => (
             <div key={index}>
@@ -327,7 +326,6 @@ const AIPracticeBot: React.FC = () => {
           )}
         </div>
 
-        {/* INPUT */}
         <div className="input-area">
           <IonTextarea
             autoGrow
@@ -345,4 +343,4 @@ const AIPracticeBot: React.FC = () => {
   );
 };
 
-export default AIPracticeBot;
+export default Home;
