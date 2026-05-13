@@ -4,13 +4,14 @@ import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     legacy()
   ],
-  base:"it35-lab/",
+
+  base: "/AiPracticeBot/",
+
   test: {
     globals: true,
     environment: 'jsdom',
